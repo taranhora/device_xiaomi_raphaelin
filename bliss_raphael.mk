@@ -26,8 +26,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210905.001/7511028:user/release-keys"
-
 # FOD animations
 TARGET_WANTS_FOD_ANIMATIONS := true
 
