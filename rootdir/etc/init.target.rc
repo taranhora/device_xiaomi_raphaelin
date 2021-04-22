@@ -162,6 +162,12 @@ on property:sys.boot_completed=1
     swapon_all /vendor/etc/fstab.qcom
     write /proc/sys/vm/swappiness 100
 
+   on property:sys.boot_completed=1
+   # Restrict permissions to socket file
+   # to hide Magisk & co.
+   chmod 440 /proc/net/unix
+
+
     # Runtime fs tuning
     write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
