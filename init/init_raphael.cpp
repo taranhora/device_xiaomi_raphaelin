@@ -130,6 +130,10 @@ void vendor_load_properties() {
         property_override("ro.product.mod_device", mod_device.c_str());
     }
 
+    if (region.find("CN") != std::string::npos ||
+        region.find("GLOBAL") != std::string::npos)
+        property_override("ro.boot.product.hardware.sku", "raphael");
+
     property_override("ro.boot.hardware.revision", hardware_revision.c_str());
 
     load_dalvikvm_properties();
