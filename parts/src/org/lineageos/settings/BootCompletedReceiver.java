@@ -43,7 +43,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             Log.d(TAG, "Received boot completed intent");
         DozeUtils.checkDozeService(context);
         PopupCameraUtils.startService(context);
-        ThermalUtils.startService(context);
+        ThermalUtils.initialize(context);
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
