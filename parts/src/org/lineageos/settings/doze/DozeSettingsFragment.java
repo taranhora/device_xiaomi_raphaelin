@@ -34,6 +34,8 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
@@ -46,9 +48,8 @@ public class DozeSettingsFragment extends PreferenceFragment
     private TextView mTextView;
     private View mSwitchBar;
 
+    private ListPreference mPickUpPreference;
     private SwitchPreference mAlwaysOnDisplayPreference;
-
-    private SwitchPreference mPickUpPreference;
     private SwitchPreference mHandwavePreference;
     private SwitchPreference mPocketPreference;
 
@@ -80,7 +81,7 @@ public class DozeSettingsFragment extends PreferenceFragment
                 (PreferenceCategory) getPreferenceScreen().findPreference(
                         DozeUtils.CATEG_PROX_SENSOR);
 
-        mPickUpPreference = (SwitchPreference) findPreference(DozeUtils.GESTURE_PICK_UP_KEY);
+        mPickUpPreference = (ListPreference) findPreference(DozeUtils.GESTURE_PICK_UP_KEY);
         mPickUpPreference.setEnabled(dozeEnabled);
         mPickUpPreference.setOnPreferenceChangeListener(this);
 
@@ -160,7 +161,6 @@ public class DozeSettingsFragment extends PreferenceFragment
             mAlwaysOnDisplayPreference.setChecked(false);
         }
         mAlwaysOnDisplayPreference.setEnabled(isChecked);
-
         mPickUpPreference.setEnabled(isChecked);
         mHandwavePreference.setEnabled(isChecked);
         mPocketPreference.setEnabled(isChecked);
