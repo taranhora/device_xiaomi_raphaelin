@@ -34,6 +34,8 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
@@ -46,9 +48,8 @@ public class DozeSettingsFragment extends PreferenceFragment
     private TextView mTextView;
     private View mSwitchBar;
 
+    private ListPreference mPickUpPreference;
     private SwitchPreference mAlwaysOnDisplayPreference;
-    private SwitchPreference mRaiseToWakePreference;
-    private SwitchPreference mPickUpPreference;
     private SwitchPreference mHandwavePreference;
     private SwitchPreference mPocketPreference;
 
@@ -73,10 +74,6 @@ public class DozeSettingsFragment extends PreferenceFragment
         mAlwaysOnDisplayPreference.setChecked(DozeUtils.isAlwaysOnEnabled(getActivity()));
         mAlwaysOnDisplayPreference.setOnPreferenceChangeListener(this);
 
-        mRaiseToWakePreference = (SwitchPreference) findPreference(DozeUtils.RAISE_TO_WAKE_KEY);
-        mRaiseToWakePreference.setEnabled(dozeEnabled);
-        mRaiseToWakePreference.setOnPreferenceChangeListener(this);
-
         PreferenceCategory pickupSensorCategory =
                 (PreferenceCategory) getPreferenceScreen().findPreference(
                         DozeUtils.CATEG_PICKUP_SENSOR);
@@ -84,7 +81,7 @@ public class DozeSettingsFragment extends PreferenceFragment
                 (PreferenceCategory) getPreferenceScreen().findPreference(
                         DozeUtils.CATEG_PROX_SENSOR);
 
-        mPickUpPreference = (SwitchPreference) findPreference(DozeUtils.GESTURE_PICK_UP_KEY);
+        mPickUpPreference = (ListPreference) findPreference(DozeUtils.GESTURE_PICK_UP_KEY);
         mPickUpPreference.setEnabled(dozeEnabled);
         mPickUpPreference.setOnPreferenceChangeListener(this);
 
@@ -105,7 +102,6 @@ public class DozeSettingsFragment extends PreferenceFragment
         if (!DozeUtils.alwaysOnDisplayAvailable(getActivity())) {
             getPreferenceScreen().removePreference(mAlwaysOnDisplayPreference);
         } else {
-            mRaiseToWakePreference.setDependency(DozeUtils.ALWAYS_ON_DISPLAY);
             pickupSensorCategory.setDependency(DozeUtils.ALWAYS_ON_DISPLAY);
             proximitySensorCategory.setDependency(DozeUtils.ALWAYS_ON_DISPLAY);
         }
@@ -165,7 +161,6 @@ public class DozeSettingsFragment extends PreferenceFragment
             mAlwaysOnDisplayPreference.setChecked(false);
         }
         mAlwaysOnDisplayPreference.setEnabled(isChecked);
-        mRaiseToWakePreference.setEnabled(isChecked);
         mPickUpPreference.setEnabled(isChecked);
         mHandwavePreference.setEnabled(isChecked);
         mPocketPreference.setEnabled(isChecked);
