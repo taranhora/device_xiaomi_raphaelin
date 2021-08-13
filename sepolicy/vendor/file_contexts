@@ -50,3 +50,7 @@
 
 # Touchfeature
 /dev/xiaomi-touch                                               u:object_r:touchfeature_device:s0
+
+# Livedisplay
+/vendor/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.raphael    u:object_r:hal_lineage_livedisplay_qti_exec:s0
+
