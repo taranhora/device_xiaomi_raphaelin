@@ -219,6 +219,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
 
+# GoogleCamera
+PRODUCT_PACKAGES += \
+    GoogleCam
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/GoogleCam/privapp-permissions-googlecamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-googlecamera.xml
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
