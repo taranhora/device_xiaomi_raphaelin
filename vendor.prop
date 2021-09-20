@@ -171,3 +171,7 @@ ro.soc.model=SM8150
 
 # Time
 persist.timed.enable=true
+
+#Touchfeature
+ro.vendor.touchfeature.gamemode.enable=true
+
