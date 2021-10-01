@@ -29,6 +29,11 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 # FOD animations
 TARGET_WANTS_FOD_ANIMATIONS := true
 
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="walleye-user 8.1.0 OPM1.171019.011 4448085 release-keys"
+
+BUILD_FINGERPRINT := google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys
+
 # Gapps
 IS_PHONE := true
 TARGET_BOOT_ANIMATION_RES := 1080
