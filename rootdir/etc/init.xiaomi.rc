@@ -86,6 +86,13 @@ service nv_mac /vendor/bin/nv_mac
     group system inet net_admin wifi net_raw
     oneshot
 
+    
+on charger
+    mkdir /mnt/vendor/persist
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/subsys 0770 root system
+
 service vendor.power /vendor/bin/hw/android.hardware.power-service-qti
     override
     class hal
