@@ -154,14 +154,8 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libdng_sdk.vendor \
+    Snap \
     vendor.xiaomi.hardware.motor@1.0.vendor
-
-# GoogleCamera
-PRODUCT_PACKAGES += \
-    GoogleCam
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/GoogleCam/privapp-permissions-googlecamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-googlecamera.xml
 
 # Component overrides
 PRODUCT_COPY_FILES += \
